@@ -37,10 +37,10 @@ static void _splitpath (const char *path, char *drive, char *dir, char *fname,
 	else
 		if (drive) *drive = 0;
 
-	slash = strrchr(path, '\\');
+	slash = strrchr(const_cast<char*>(path), '\\');
 	if (!slash)
-		slash = strrchr(path, '/');
-	dot = strrchr(path, '.');
+		slash = strrchr(const_cast<char*>(path), '/');
+	dot = strrchr(const_cast<char*>(path), '.');
 	if (dot && slash && dot < slash)
 		// a:/home/kaoru-k/.xxx/foo のような場合
 		dot = NULL;
